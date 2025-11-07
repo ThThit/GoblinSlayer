@@ -1,23 +1,27 @@
 public class BleedEffect extends StatusEffect {
 
-    public BleedEffect(String name, int duration, RPGCharacter target) {
-        super(name, duration, target);
-        //TODO Auto-generated constructor stub
+    final int damagePerTurn;
+
+    public BleedEffect(String name, int duration, RPGCharacter target, int damagePerTurn) {
+        super("Bleed", duration, target);
+        this.damagePerTurn = damagePerTurn;
     }
 
     @Override
     public void onApply() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        System.out.println(target.name + " is bleeding");
+        target.takeDamage(this.damagePerTurn);
     }
 
     @Override
     public void onTurnStart() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        System.out.println(" > " + target.name + " suffers from blood loss.");
+        target.takeDamage(this.damagePerTurn);
     }
 
     @Override
     public void removeStatus() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        
     }
     
 }

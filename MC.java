@@ -1,7 +1,7 @@
 public class MC extends RPGCharacter{
 
     public MC(String name, int health, String race) {
-        super(name, health, race);
+        super(name, health);
         //TODO Auto-generated constructor stub
     }
 
@@ -11,8 +11,9 @@ public class MC extends RPGCharacter{
     }
 
     @Override
-    public void getHeal(int heal) {
+    public void performCharacterTurn(RPGCharacter character) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+
     
 }

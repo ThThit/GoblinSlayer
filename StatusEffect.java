@@ -4,7 +4,7 @@ public abstract class StatusEffect {
 
     private String name;
     private int duration;
-    private RPGCharacter target; // the character who is effected
+    protected RPGCharacter target; // the character who is effected
 
     public StatusEffect(String name, int duration, RPGCharacter target) {
         this.name = name;

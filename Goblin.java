@@ -1,7 +1,7 @@
 public class Goblin extends RPGCharacter {
 
-    public Goblin(String name, int health, String race) {
-        super(name, health, race);
+    public Goblin(String name, int health) {
+        super(name, health);
     }
 
     @Override
@@ -10,8 +10,10 @@ public class Goblin extends RPGCharacter {
     }
 
     @Override
-    public void getHeal(int heal) {
+    public void performCharacterTurn(RPGCharacter character) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+
+    
 
 }

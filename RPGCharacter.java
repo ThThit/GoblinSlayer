@@ -1,16 +1,52 @@
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 public abstract class RPGCharacter {
     // abstract for character in the RPG
-    private String name;
-    private int health;
-    private String race;
+    protected  String name;
+    protected  int health;
+    protected boolean canAct; // for stun effect
 
-    public RPGCharacter(String name, int health, String race) {
+    // list to store effects
+    protected List<StatusEffect> activeEffecList;
+
+    public RPGCharacter(String name, int health) {
         this.name = name;
         this.health = health;
-        this.race = race;
+        this.canAct = true;
+        this.activeEffecList = new ArrayList<>(); // to store multiple effect
     }
 
-    public abstract void takeDamage(int dmg);
+    // abstract method to do character action when its turn
+    public abstract void performCharacterTurn(RPGCharacter character);
 
-    public abstract void getHeal(int heal);
+    public void takeDamage(int dmg) {
+        this.health -= dmg;
+        if (this.health < 0)
+            this.health = 0;
+        // print status
+        System.out.println(this.name + " takes " + dmg + " damage");
+        System.err.println("HP reaming: " + this.health);
+    };
+
+    public void addStatusEffect(StatusEffect effect) {
+        this.activeEffecList.add(effect);
+        effect.onApply(); // apply effect debuff on character. 
+    }
+
+    // loop through the effects and process each effect 
+    public void processTurnStartEffects() {
+        Iterator<StatusEffect> iterator = activeEffecList.iterator();
+
+        if (iterator.hasNext()) {
+            StatusEffect effect = iterator.next();
+
+            // apply the effect when turn start
+            effect.onTurnStart();
+
+            effect.dercementDuration();
+        }
+    }
+    
 }
