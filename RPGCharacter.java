@@ -21,6 +21,7 @@ public abstract class RPGCharacter {
     // abstract method to do character action when its turn
     public abstract void performCharacterTurn(RPGCharacter character);
 
+
     public void takeDamage(int dmg) {
         this.health -= dmg;
         if (this.health < 0)
@@ -49,4 +50,20 @@ public abstract class RPGCharacter {
         }
     }
     
+    public void setCanAct(boolean canAct) {
+        this.canAct = canAct;
+    }
+
+    public boolean canAct() {
+        return this.canAct;
+    }
+
+    public int getHealth() {
+        return this.health;
+    }
+    
+    // check if a character is alive or not
+    public boolean isAlive() {
+        return this.health > 0;
+    }
 }
