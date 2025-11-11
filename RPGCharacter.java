@@ -49,6 +49,20 @@ public abstract class RPGCharacter {
             effect.dercementDuration();
         }
     }
+
+    // get the list of active effects
+    public String getActiveEffectNames() {
+        if (activeEffecList.isEmpty())
+            return "None";
+        
+        String result = "";
+        for (StatusEffect effect : activeEffecList) {
+            if (!result.isEmpty())
+                result += ", ";
+            result += effect.getName();
+        }
+        return result;
+    }
     
     public void setCanAct(boolean canAct) {
         this.canAct = canAct;

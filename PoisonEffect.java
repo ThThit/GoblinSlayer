@@ -1,17 +1,22 @@
 public class PoisonEffect extends StatusEffect{
 
-    public PoisonEffect(String name, int duration, RPGCharacter target) {
+    protected  final int damagePerTurn;
+
+    public PoisonEffect(String name, int duration, RPGCharacter target, int damagePerTurn) {
         super(name, duration, target);
+        this.damagePerTurn = damagePerTurn;
     }
 
     @Override
     public void onApply() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        System.out.println("Poison");
+        target.health -= damagePerTurn;
     }
 
     @Override
     public void onTurnStart() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        System.out.println("  > " + target.name + " takes " + this.damagePerTurn + " poison damage!");
+        target.takeDamage(this.damagePerTurn);
     }
 
     @Override

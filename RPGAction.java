@@ -36,6 +36,9 @@ public class RPGAction {
             }
 
             System.out.println("\n===== END OF TURN STATUS =====");
+            System.out.println(hero.name + ": " + hero.getHealth() + "HP Effects: " + hero.getActiveEffectNames());
+            System.out.println(goblin.name + ": " + goblin.getHealth() + "HP Effects: " + goblin.getActiveEffectNames());
+            System.out.println();
         }
 
 
