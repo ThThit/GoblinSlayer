@@ -16,6 +16,7 @@ public class Goblin extends RPGCharacter {
     @Override
     public void performCharacterTurn(RPGCharacter opponent) {
         int num = rand.nextInt(5) + 1; // 1 to 5
+        // int num = 2;
 
         switch (num) {
             case 1:

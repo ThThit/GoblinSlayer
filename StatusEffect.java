@@ -2,8 +2,8 @@ public abstract class StatusEffect {
     // abstract class for attack effects 
     // damage overtime values and others
 
-    private String name;
-    private int duration;
+    protected  String name;
+    protected  int duration;
     protected RPGCharacter target; // the character who is effected
 
     public StatusEffect(String name, int duration, RPGCharacter target) {
@@ -12,7 +12,7 @@ public abstract class StatusEffect {
         this.target = target;
     }
 
-    public void dercementDuration() {
+    public void decrementDuration() {
         this.duration--;
     }
 

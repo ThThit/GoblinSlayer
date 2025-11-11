@@ -21,15 +21,30 @@ public class RPGAction {
         // main game loop
         while (hero.isAlive() && goblin.isAlive()) {
             System.out.println(">>> --- " + hero.name + "'s Turn --- <<<");
-            hero.performCharacterTurn(goblin);
+            hero.processTurnStartEffects();
+            hero.processTurnStartEffects();
+
+            // do alive and can act
+            if (hero.isAlive() && hero.canAct()) {
+                hero.performCharacterTurn(goblin);
+            } else if (!hero.isAlive()) {
+                break; // Died from poison/bleed
+            }
 
             if (!goblin.isAlive()) {
                 break;
             }
 
+            // goblin turn 
             System.out.println("\n-------------------------------------");
             System.out.println(">>> --- " + goblin.name + "'s Turn --- <<<");
-            goblin.performCharacterTurn(hero);
+            goblin.processTurnStartEffects();
+
+            if (goblin.isAlive() && goblin.canAct()) {
+                goblin.performCharacterTurn(hero);
+            } else if (!goblin.isAlive()) {
+                break; // Died from poison/bleed
+            }
 
             if (!hero.isAlive()) {
                 break;
@@ -37,10 +52,20 @@ public class RPGAction {
 
             System.out.println("\n===== END OF TURN STATUS =====");
             System.out.println(hero.name + ": " + hero.getHealth() + "HP Effects: " + hero.getActiveEffectNames());
-            System.out.println(goblin.name + ": " + goblin.getHealth() + "HP Effects: " + goblin.getActiveEffectNames());
+            System.out
+                    .println(goblin.name + ": " + goblin.getHealth() + "HP Effects: " + goblin.getActiveEffectNames());
             System.out.println();
         }
 
+        // game end
+        System.out.println("\n!!!!!!!! BATTLE OVER !!!!!!!!");
+        if (hero.isAlive()) {
+            System.out.println(hero.name + " is victorious!");
+        } else if (goblin.isAlive()) {
+            System.out.println(goblin.name + " has defeated you!");
+        } else {
+            System.out.println("The battle is a draw!");
+        }
 
         
     }

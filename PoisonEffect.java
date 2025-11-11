@@ -9,8 +9,7 @@ public class PoisonEffect extends StatusEffect{
 
     @Override
     public void onApply() {
-        System.out.println("Poison");
-        target.health -= damagePerTurn;
+        System.out.println("  > " + target.name + " has been poisoned!");
     }
 
     @Override

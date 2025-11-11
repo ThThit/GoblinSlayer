@@ -7,6 +7,7 @@ public abstract class RPGCharacter {
     protected  String name;
     protected  int health;
     protected boolean canAct; // for stun effect
+    protected boolean isBlocking;
 
     // list to store effects
     protected List<StatusEffect> activeEffecList;
@@ -15,6 +16,7 @@ public abstract class RPGCharacter {
         this.name = name;
         this.health = health;
         this.canAct = true;
+        this.isBlocking = false; // not block at default
         this.activeEffecList = new ArrayList<>(); // to store multiple effect
     }
 
@@ -23,12 +25,19 @@ public abstract class RPGCharacter {
 
 
     public void takeDamage(int dmg) {
-        this.health -= dmg;
-        if (this.health < 0)
-            this.health = 0;
-        // print status
-        System.out.println(this.name + " takes " + dmg + " damage");
-        System.err.println("HP reaming: " + this.health);
+        int actDmg = dmg;
+
+        // block 95% dmg
+        if (this.isBlocking = true) {
+            actDmg = (int) (dmg * 0.95);
+            System.out.println("  > " + this.name + " blocks the attack, taking only " + actDmg + " damage!");
+        } else {
+            System.out.println("  > " + this.name + " takes " + actDmg + " damage!");
+        }
+        this.health -= actDmg;
+        if (this.health < 0) this.health = 0;
+        // print health
+        System.out.println("  > HP remaining: " + this.health);
     };
 
     public void addStatusEffect(StatusEffect effect) {
@@ -46,7 +55,13 @@ public abstract class RPGCharacter {
             // apply the effect when turn start
             effect.onTurnStart();
 
-            effect.dercementDuration();
+            effect.decrementDuration();
+
+            if (effect.isFinished()) {
+                System.out.println("  > " + effect.getName() + " has worn off from " + this.name + ".");
+                // effect.removeStatus(); // clean effect 
+                iterator.remove(); // Safely remove the effect from the list
+            }
         }
     }
 
@@ -69,7 +84,12 @@ public abstract class RPGCharacter {
     }
 
     public boolean canAct() {
-        return this.canAct;
+        if (!this.canAct) {
+            System.out.println("  > " + this.name + " is Stunned and cannot act!");
+            return false;
+        }
+        // set true for next turn 
+        return true;
     }
 
     public int getHealth() {
