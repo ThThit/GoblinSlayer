@@ -27,7 +27,7 @@ public abstract class RPGCharacter {
         int actDmg = dmg;
 
         // block 95% dmg
-        if (this.isBlocking = true) {
+        if (this.isBlocking == true) {
             actDmg = (int) (dmg * 0.95);
             System.out.println("  > " + this.name + " blocks the attack, taking only " + actDmg + " damage!");
         } else {
@@ -46,6 +46,7 @@ public abstract class RPGCharacter {
 
     // loop through the effects and process each effect 
     public void processTurnStartEffects() {
+        this.isBlocking = false; // Reset blocking flag at start of turn
         Iterator<StatusEffect> iterator = activeEffecList.iterator();
 
         while (iterator.hasNext()) {
@@ -88,6 +89,7 @@ public abstract class RPGCharacter {
             return false;
         }
         // set true for next turn 
+        this.canAct = true;
         return true;
     }
 

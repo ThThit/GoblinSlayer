@@ -1,8 +1,9 @@
 import java.util.Scanner;
+import java.util.Random;
 
 public class Player extends RPGCharacter {
-    
     private Scanner sc = new Scanner(System.in);
+    private static final Random random = new Random();
 
     public Player(String name, int health, Scanner sc) {
         super(name, health);
@@ -19,7 +20,7 @@ public class Player extends RPGCharacter {
         System.out.println("Choose Your action: ");
         System.out.println(" 1. Basic Attack (Deals 10 damage)");
         System.out.println(" 2. Cast 'Posion' (Deals 5 damage for 3 turns)");
-        System.out.println(" 3. Cast 'Bleed' (75% chance to Stop enemy for 1 turn with Base damage of 5)");
+        System.out.println(" 3. Cast 'Stun' (75% chance to Stop enemy for 1 turn with Base damage of 5)");
         System.out.println(" 4. Cast 'Bleed' (Deals 2 damage for 5 turns)");
         System.out.println(" 5. Block (absorb 95% of the incoming damage)");
         System.out.print("Your choice: ");
@@ -44,7 +45,16 @@ public class Player extends RPGCharacter {
                 break;
             case 3:
                 System.out.println(this.name + " casts 'Stun' on " + opponent.name + "!");
-            break;
+                //75% chance to stun
+                int chance = random.nextInt(100);
+                if (chance < 75) {
+                    opponent.addStatusEffect(new StunEffect("Stun", 1, opponent));
+                    System.out.println(" > Stun successful! " + opponent.name + " is stunned for 1 turn!");
+                } else { 
+                    System.out.println(" > Stun unsuccessful!");
+                    opponent.takeDamage(5);
+                }
+                break;
             case 4:
                 System.out.println(this.name + " casts 'Bleed' on " + opponent.name + "!");
                 opponent.addStatusEffect(new BleedEffect("Bleed", 5, opponent, 2));

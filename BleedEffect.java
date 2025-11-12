@@ -7,13 +7,11 @@ public class BleedEffect extends StatusEffect {
         this.damagePerTurn = damagePerTurn;
     }
 
-    @Override
     public void onApply() {
         System.out.println(target.name + " is bleeding");
         target.takeDamage(this.damagePerTurn);
     }
 
-    @Override
     public void onTurnStart() {
         System.out.println(" > " + target.name + " suffers from blood loss.");
         target.takeDamage(this.damagePerTurn);

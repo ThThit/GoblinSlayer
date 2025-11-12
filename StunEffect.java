@@ -6,17 +6,21 @@ public class StunEffect extends StatusEffect{
 
     @Override
     public void onApply() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        System.out.println(" > " + target.name + " has been stunned!");
+        target.setCanAct(false);
+        target.takeDamage(5);
     }
 
     @Override
     public void onTurnStart() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        target.setCanAct(false);
+        System.out.println(" > " + target.name + " is still stunned!");
     }
 
     @Override
     public void removeStatus() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        target.setCanAct(true);
+        System.out.println(" > " + target.name + " can act again!");
     }
     
 }
