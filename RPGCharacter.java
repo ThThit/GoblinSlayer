@@ -23,7 +23,6 @@ public abstract class RPGCharacter {
     // abstract method to do character action when its turn
     public abstract void performCharacterTurn(RPGCharacter character);
 
-
     public void takeDamage(int dmg) {
         int actDmg = dmg;
 
@@ -49,7 +48,7 @@ public abstract class RPGCharacter {
     public void processTurnStartEffects() {
         Iterator<StatusEffect> iterator = activeEffecList.iterator();
 
-        if (iterator.hasNext()) {
+        while (iterator.hasNext()) {
             StatusEffect effect = iterator.next();
 
             // apply the effect when turn start

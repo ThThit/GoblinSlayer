@@ -32,6 +32,7 @@ public class Goblin extends RPGCharacter {
             break;
             case 4:
                 System.out.println(this.name + " casts 'Bleed' on " + opponent.name + "!");
+                opponent.addStatusEffect(new BleedEffect("Bleed", 3, opponent, 3));
             break;
             case 5:
                 System.out.println(this.name + " is blocking " + opponent.name + "'s attack!");

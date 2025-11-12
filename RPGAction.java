@@ -22,7 +22,6 @@ public class RPGAction {
         while (hero.isAlive() && goblin.isAlive()) {
             System.out.println(">>> --- " + hero.name + "'s Turn --- <<<");
             hero.processTurnStartEffects();
-            hero.processTurnStartEffects();
 
             // do alive and can act
             if (hero.isAlive() && hero.canAct()) {

@@ -1,6 +1,6 @@
 public class BleedEffect extends StatusEffect {
 
-    final int damagePerTurn;
+    protected final int damagePerTurn;
 
     public BleedEffect(String name, int duration, RPGCharacter target, int damagePerTurn) {
         super("Bleed", duration, target);

@@ -1,4 +1,3 @@
-
 import java.util.Scanner;
 
 public class Player extends RPGCharacter {
@@ -8,7 +7,6 @@ public class Player extends RPGCharacter {
     public Player(String name, int health, Scanner sc) {
         super(name, health);
         this.sc = sc;
-
     }
 
     @Override
@@ -49,7 +47,8 @@ public class Player extends RPGCharacter {
             break;
             case 4:
                 System.out.println(this.name + " casts 'Bleed' on " + opponent.name + "!");
-            break;
+                opponent.addStatusEffect(new BleedEffect("Bleed", 5, opponent, 2));
+                break;
             case 5:
                 System.out.println(this.name + " is blocking " + opponent.name + "'s attack!");
                 break;
