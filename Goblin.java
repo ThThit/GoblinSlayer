@@ -45,6 +45,7 @@ public class Goblin extends RPGCharacter {
                 break;
             case 5:
                 System.out.println(this.name + " is blocking " + opponent.name + "'s attack!");
+                this.isBlocking = true;
                 break;
             default:
                 System.out.println(this.name + " does nothing.");

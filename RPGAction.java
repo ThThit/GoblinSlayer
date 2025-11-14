@@ -10,7 +10,7 @@ public class RPGAction {
         Scanner sc = new Scanner(System.in);
         
         // crate characters
-        RPGCharacter hero = new Player("Duke", 100, sc);
+        RPGCharacter hero = new Player("MainMain", 100, sc);
         RPGCharacter goblin = new Goblin("Dudu", 50);
 
         System.out.println("Battle Start!");
