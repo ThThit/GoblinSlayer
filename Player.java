@@ -19,7 +19,7 @@ public class Player extends RPGCharacter {
         System.out.println("Choose Your action: ");
         System.out.println(" 1. Basic Attack (Deals 10 damage)");
         System.out.println(" 2. Cast 'Posion' (Deals 5 damage for 3 turns)");
-        System.out.println(" 3. Cast 'Bleed' (75% chance to Stop enemy for 1 turn with Base damage of 5)");
+        System.out.println(" 3. Cast 'Stun' (75% chance to Stop enemy for 1 turn with Base damage of 5)");
         System.out.println(" 4. Cast 'Bleed' (Deals 2 damage for 5 turns)");
         System.out.println(" 5. Block (absorb 95% of the incoming damage)");
         System.out.print("Your choice: ");
@@ -51,6 +51,7 @@ public class Player extends RPGCharacter {
                 break;
             case 5:
                 System.out.println(this.name + " is blocking " + opponent.name + "'s attack!");
+                this.isBlocking = true;
                 break;
             default:
                 System.out.println(this.name + " does nothing.");

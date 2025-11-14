@@ -27,8 +27,8 @@ public abstract class RPGCharacter {
         int actDmg = dmg;
 
         // block 95% dmg
-        if (this.isBlocking = true) {
-            actDmg = (int) (dmg * 0.95);
+        if (this.isBlocking == true) {
+            actDmg = (int) (dmg * 0.5);
             System.out.println("  > " + this.name + " blocks the attack, taking only " + actDmg + " damage!");
         } else {
             System.out.println("  > " + this.name + " takes " + actDmg + " damage!");
