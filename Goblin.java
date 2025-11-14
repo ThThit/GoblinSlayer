@@ -25,15 +25,24 @@ public class Goblin extends RPGCharacter {
             break;
             case 2:
                 System.out.println(this.name + " casts 'Poison' on " + opponent.name + "!");
-                opponent.addStatusEffect(new PoisonEffect("Posion", 3, opponent, 5));
+                opponent.addStatusEffect(new PoisonEffect("Poison", 3, opponent, 5));
                 break;
             case 3:
                 System.out.println(this.name + " casts 'Stun' on " + opponent.name + "!");
-            break;
+                //75% chance to stun
+                int chance = rand.nextInt(100);
+                if (chance < 75) {
+                    opponent.addStatusEffect(new StunEffect("Stun", 1, opponent));
+                    System.out.println(" > Stun successful! " + opponent.name + " is stunned for 1 turn!");
+                } else { 
+                    System.out.println(" > Stun unsuccessful!");
+                    opponent.takeDamage(5);
+                }
+                break;
             case 4:
                 System.out.println(this.name + " casts 'Bleed' on " + opponent.name + "!");
                 opponent.addStatusEffect(new BleedEffect("Bleed", 3, opponent, 3));
-            break;
+                break;
             case 5:
                 System.out.println(this.name + " is blocking " + opponent.name + "'s attack!");
                 this.isBlocking = true;

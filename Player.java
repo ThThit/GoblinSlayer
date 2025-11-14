@@ -1,8 +1,9 @@
 import java.util.Scanner;
+import java.util.Random;
 
 public class Player extends RPGCharacter {
-    
     private Scanner sc = new Scanner(System.in);
+    private static final Random random = new Random();
 
     public Player(String name, int health, Scanner sc) {
         super(name, health);
@@ -44,7 +45,16 @@ public class Player extends RPGCharacter {
                 break;
             case 3:
                 System.out.println(this.name + " casts 'Stun' on " + opponent.name + "!");
-            break;
+                //75% chance to stun
+                int chance = random.nextInt(100);
+                if (chance < 75) {
+                    opponent.addStatusEffect(new StunEffect("Stun", 1, opponent));
+                    System.out.println(" > Stun successful! " + opponent.name + " is stunned for 1 turn!");
+                } else { 
+                    System.out.println(" > Stun unsuccessful!");
+                    opponent.takeDamage(5);
+                }
+                break;
             case 4:
                 System.out.println(this.name + " casts 'Bleed' on " + opponent.name + "!");
                 opponent.addStatusEffect(new BleedEffect("Bleed", 5, opponent, 2));
