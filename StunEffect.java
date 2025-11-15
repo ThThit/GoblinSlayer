@@ -14,7 +14,7 @@ public class StunEffect extends StatusEffect{
     @Override
     public void onTurnStart() {
         target.setCanAct(false);
-        System.out.println(" > " + target.name + " is still stunned!");
+        // System.out.println(" > " + target.name + " is still stunned!");
     }
 
     @Override

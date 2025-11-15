@@ -10,7 +10,7 @@ public class RPGAction {
     private static void delay (long milliseconds) {
         long startTime = System.currentTimeMillis();
         while (System.currentTimeMillis() < startTime + milliseconds) {
-
+            
         }
     }
 
@@ -21,17 +21,19 @@ public class RPGAction {
         RPGCharacter hero = new Player("MainMain", 100, sc);
         RPGCharacter goblin = new Goblin("Dudu", 50);
 
+        System.out.println("-----------------------------------------");
+        System.out.println("-----------------------------------------");
+        System.out.println("-----------------------------------------");
         System.out.println("Battle Start!");
         System.out.println(hero.name + ": " + hero.getHealth() + " HP");
         System.out.println(goblin.name + ": " + goblin.getHealth() + " HP");
-        System.out.println("=====================================\n");
+        System.out.println("-----------------------------------------");
 
         delay(1000);
 
         // main game loop
         while (hero.isAlive() && goblin.isAlive()) {
             System.out.println(">>> --- " + hero.name + "'s Turn --- <<<");
-            delay(1000);
             hero.processTurnStartEffects();
 
             // do alive and can act
@@ -41,6 +43,7 @@ public class RPGAction {
                 break; // Died from poison/bleed
             }
 
+            // hero.processTurnEndEffects();
             delay(1000);
 
             if (!goblin.isAlive()) {
@@ -48,9 +51,8 @@ public class RPGAction {
             }
 
             // goblin turn 
-            System.out.println("\n-------------------------------------");
+            System.out.println("-----------------------------------------");
             System.out.println(">>> --- " + goblin.name + "'s Turn --- <<<");
-            delay(500);
 
             goblin.processTurnStartEffects();
 
@@ -65,7 +67,7 @@ public class RPGAction {
             if (!hero.isAlive()) {
                 break;
             }
-
+            System.out.println("-----------------------------------------");
             System.out.println("\n===== END OF TURN STATUS =====");
             System.out.println(hero.name + ": " + hero.getHealth() + "HP Effects: " + hero.getActiveEffectNames());
             System.out.println(goblin.name + ": " + goblin.getHealth() + "HP Effects: " + goblin.getActiveEffectNames());

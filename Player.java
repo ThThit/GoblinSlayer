@@ -22,7 +22,7 @@ public class Player extends RPGCharacter {
         System.out.println(" 2. Cast 'Posion' (Deals 5 damage for 3 turns)");
         System.out.println(" 3. Cast 'Stun' (75% chance to Stop enemy for 1 turn with Base damage of 5)");
         System.out.println(" 4. Cast 'Bleed' (Deals 2 damage for 5 turns)");
-        System.out.println(" 5. Block (absorb 75% of the incoming damage)");
+        System.out.println(" 5. Block (absorb 95% of the incoming damage)");
         System.out.print("Your choice: ");
 
         // try case to prevent undefined action
@@ -30,11 +30,12 @@ public class Player extends RPGCharacter {
         while (true) {
             choice = sc.nextInt();
             if (choice >= 1 && choice <= 5) {
+
                 break;
             }
             System.out.println("Action not available. Try again.");
         }
-
+        System.out.println("-----------------------------------------");
         switch (choice) {
             case 1: 
                 System.out.println(this.name + " attacks " + opponent.name + "!");
@@ -50,7 +51,6 @@ public class Player extends RPGCharacter {
                 int chance = random.nextInt(100);
                 if (chance < 75) {
                     opponent.addStatusEffect(new StunEffect("Stun", 1, opponent));
-                    System.out.println(" > Stun successful! " + opponent.name + " is stunned for 1 turn!");
                 } else { 
                     System.out.println(" > Stun unsuccessful!");
                     opponent.takeDamage(5);
