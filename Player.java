@@ -42,6 +42,7 @@ public class Player extends RPGCharacter {
                 break;
             case 2:
                 System.out.println(this.name + " casts 'Poison' on " + opponent.name + "!");
+                opponent.addStatusEffect(new PoisonEffect("Poison", 3, opponent, 5));
                 break;
             case 3:
                 System.out.println(this.name + " casts 'Stun' on " + opponent.name + "!");
