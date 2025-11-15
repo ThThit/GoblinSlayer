@@ -37,15 +37,15 @@ public class Player extends RPGCharacter {
         }
         System.out.println("-----------------------------------------");
         switch (choice) {
-            case 1: 
+            case 1 -> { 
                 System.out.println(this.name + " attacks " + opponent.name + "!");
                 opponent.takeDamage(10);
-                break;
-            case 2:
+            }
+            case 2 -> {
                 System.out.println(this.name + " casts 'Poison' on " + opponent.name + "!");
                 opponent.addStatusEffect(new PoisonEffect("Poison", 3, opponent, 5));
-                break;
-            case 3:
+            }
+            case 3 -> {
                 System.out.println(this.name + " casts 'Stun' on " + opponent.name + "!");
                 //75% chance to stun
                 int chance = random.nextInt(100);
@@ -55,17 +55,16 @@ public class Player extends RPGCharacter {
                     System.out.println(" > Stun unsuccessful!");
                     opponent.takeDamage(5);
                 }
-                break;
-            case 4:
+            }
+            case 4 -> {
                 System.out.println(this.name + " casts 'Bleed' on " + opponent.name + "!");
                 opponent.addStatusEffect(new BleedEffect("Bleed", 5, opponent, 2));
-                break;
-            case 5:
+            }
+            case 5 -> {
                 System.out.println(this.name + " is blocking " + opponent.name + "'s attack!");
                 this.isBlocking = true;
-                break;
-            default:
-                System.out.println(this.name + " does nothing.");
+            }
+            default -> System.out.println(this.name + " does nothing.");
         }
     }
 
