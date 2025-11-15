@@ -1,5 +1,5 @@
-import java.util.Scanner;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Player extends RPGCharacter {
     private Scanner sc = new Scanner(System.in);
@@ -22,7 +22,7 @@ public class Player extends RPGCharacter {
         System.out.println(" 2. Cast 'Posion' (Deals 5 damage for 3 turns)");
         System.out.println(" 3. Cast 'Stun' (75% chance to Stop enemy for 1 turn with Base damage of 5)");
         System.out.println(" 4. Cast 'Bleed' (Deals 2 damage for 5 turns)");
-        System.out.println(" 5. Block (absorb 95% of the incoming damage)");
+        System.out.println(" 5. Block (absorb 75% of the incoming damage)");
         System.out.print("Your choice: ");
 
         // try case to prevent undefined action
@@ -42,6 +42,7 @@ public class Player extends RPGCharacter {
                 break;
             case 2:
                 System.out.println(this.name + " casts 'Poison' on " + opponent.name + "!");
+                opponent.addStatusEffect(new PoisonEffect("Poison", 3, opponent, 5));
                 break;
             case 3:
                 System.out.println(this.name + " casts 'Stun' on " + opponent.name + "!");

@@ -20,7 +20,7 @@ public class PoisonEffect extends StatusEffect{
 
     @Override
     public void removeStatus() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        // throw new UnsupportedOperationException("Not supported yet.");
     }
     
 }

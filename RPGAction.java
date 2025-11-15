@@ -6,6 +6,14 @@ public class RPGAction {
     // choose mc attack and apply status based on the attack 
     // goblin will attack back with random attack and random effect
     // loop until on one 
+
+    private static void delay (long milliseconds) {
+        long startTime = System.currentTimeMillis();
+        while (System.currentTimeMillis() < startTime + milliseconds) {
+
+        }
+    }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         
@@ -18,9 +26,12 @@ public class RPGAction {
         System.out.println(goblin.name + ": " + goblin.getHealth() + " HP");
         System.out.println("=====================================\n");
 
+        delay(1000);
+
         // main game loop
         while (hero.isAlive() && goblin.isAlive()) {
             System.out.println(">>> --- " + hero.name + "'s Turn --- <<<");
+            delay(1000);
             hero.processTurnStartEffects();
 
             // do alive and can act
@@ -30,6 +41,8 @@ public class RPGAction {
                 break; // Died from poison/bleed
             }
 
+            delay(1000);
+
             if (!goblin.isAlive()) {
                 break;
             }
@@ -37,6 +50,8 @@ public class RPGAction {
             // goblin turn 
             System.out.println("\n-------------------------------------");
             System.out.println(">>> --- " + goblin.name + "'s Turn --- <<<");
+            delay(500);
+
             goblin.processTurnStartEffects();
 
             if (goblin.isAlive() && goblin.canAct()) {
@@ -44,6 +59,8 @@ public class RPGAction {
             } else if (!goblin.isAlive()) {
                 break; // Died from poison/bleed
             }
+            
+            delay(1000);
 
             if (!hero.isAlive()) {
                 break;
@@ -51,13 +68,21 @@ public class RPGAction {
 
             System.out.println("\n===== END OF TURN STATUS =====");
             System.out.println(hero.name + ": " + hero.getHealth() + "HP Effects: " + hero.getActiveEffectNames());
-            System.out
-                    .println(goblin.name + ": " + goblin.getHealth() + "HP Effects: " + goblin.getActiveEffectNames());
+            System.out.println(goblin.name + ": " + goblin.getHealth() + "HP Effects: " + goblin.getActiveEffectNames());
+            System.out.println("-----------------------------------------");
+            System.out.println("-----------------------------------------");
+            System.out.println("-----------------------------------------");
             System.out.println();
+
+            delay(1500);
         }
 
         // game end
+        System.out.println("-----------------------------------------");
+        System.out.println("-----------------------------------------");
+        System.out.print("-----------------------------------------");
         System.out.println("\n!!!!!!!! BATTLE OVER !!!!!!!!");
+        delay(500);
         if (hero.isAlive()) {
             System.out.println(hero.name + " is victorious!");
         } else if (goblin.isAlive()) {
@@ -65,7 +90,8 @@ public class RPGAction {
         } else {
             System.out.println("The battle is a draw!");
         }
-
-        
+        System.out.println("-----------------------------------------");
+        System.out.println("-----------------------------------------");
+        System.out.println("-----------------------------------------");
     }
 }

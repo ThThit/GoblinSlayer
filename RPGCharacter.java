@@ -59,7 +59,7 @@ public abstract class RPGCharacter {
 
             if (effect.isFinished()) {
                 System.out.println("  > " + effect.getName() + " has worn off from " + this.name + ".");
-                // effect.removeStatus(); // clean effect 
+                effect.removeStatus(); // clean effect 
                 iterator.remove(); // Safely remove the effect from the list
             }
         }
