@@ -22,7 +22,7 @@ public class Player extends RPGCharacter {
         System.out.println(" 2. Cast 'Posion' (Deals 5 damage for 3 turns)");
         System.out.println(" 3. Cast 'Stun' (75% chance to Stop enemy for 1 turn with Base damage of 5)");
         System.out.println(" 4. Cast 'Bleed' (Deals 2 damage for 5 turns)");
-        System.out.println(" 5. Block (absorb 95% of the incoming damage)");
+        System.out.println(" 5. Block (95% chane to block incoming damage)");
         System.out.print("Your choice: ");
 
         // try case to prevent undefined action
