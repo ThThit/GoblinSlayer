@@ -28,7 +28,7 @@ public abstract class RPGCharacter {
 
         // block 95% dmg
         if (this.isBlocking == true) {
-            actDmg = (int) (dmg * 0.25);
+            actDmg = (int) (dmg * 0.05);
             System.out.println("  > " + this.name + " blocks the attack, taking only " + actDmg + " damage!");
         } else {
             System.out.println("  > " + this.name + " takes " + actDmg + " damage!");
@@ -85,7 +85,7 @@ public abstract class RPGCharacter {
 
     public boolean canAct() {
         if (!this.canAct) {
-            System.out.println("  > " + this.name + " is Stunned and cannot act!");
+            System.out.println("  > " + this.name + " is stunned and cannot act!");
             return false;
         }
         // set true for next turn 

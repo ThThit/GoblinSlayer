@@ -33,7 +33,6 @@ public class Goblin extends RPGCharacter {
                 int chance = rand.nextInt(100);
                 if (chance < 75) {
                     opponent.addStatusEffect(new StunEffect("Stun", 1, opponent));
-                    System.out.println(" > Stun successful! " + opponent.name + " is stunned for 1 turn!");
                 } else { 
                     System.out.println(" > Stun unsuccessful!");
                     opponent.takeDamage(5);
