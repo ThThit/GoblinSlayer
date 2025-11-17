@@ -1,7 +1,13 @@
-public class StunEffect extends StatusEffect{
+public class StunEffect implements StatusEffect {
+    
+    protected String name;
+    protected int duration;
+    protected RPGCharacter target;
 
     public StunEffect(String name, int duration, RPGCharacter target) {
-        super(name, duration, target);
+        this.name = name;
+        this.duration = duration;
+        this.target = target;
     }
 
     @Override
@@ -21,6 +27,26 @@ public class StunEffect extends StatusEffect{
     public void removeStatus() {
         target.setCanAct(true);
         System.out.println(" > " + target.name + " can act again!");
+    }
+
+    @Override
+    public void decrementDuration() {
+        this.duration--;
+    }
+
+    @Override
+    public boolean isFinished() {
+        return this.duration <= 0;
+    }
+
+    @Override
+    public String getName() {
+        return this.name;
+    }
+
+    @Override
+    public int getDuration() {
+        return this.duration;
     }
     
 }

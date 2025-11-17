@@ -21,7 +21,7 @@ public class Goblin extends RPGCharacter {
         switch (num) {
             case 1:
             System.out.println(this.name + " attacks " + opponent.name + "!");
-            opponent.takeDamage(10);
+            opponent.takeDamage(5);
             break;
             case 2:
                 System.out.println(this.name + " casts 'Poison' on " + opponent.name + "!");

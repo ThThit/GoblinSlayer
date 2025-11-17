@@ -1,9 +1,15 @@
-public class PoisonEffect extends StatusEffect{
+public class PoisonEffect implements  StatusEffect{
 
-    protected  final int damagePerTurn;
+    protected String name;
+    protected int duration;
+    protected RPGCharacter target;
+
+    protected final int damagePerTurn;
 
     public PoisonEffect(String name, int duration, RPGCharacter target, int damagePerTurn) {
-        super(name, duration, target);
+        this.name = name;
+        this.duration = duration;
+        this.target = target;
         this.damagePerTurn = damagePerTurn;
     }
 
@@ -20,7 +26,27 @@ public class PoisonEffect extends StatusEffect{
 
     @Override
     public void removeStatus() {
-        // throw new UnsupportedOperationException("Not supported yet.");
+        System.out.println("  > " + target.name + " is no longer poisoned.");
+    }
+
+    @Override
+    public void decrementDuration() {
+        this.duration--;
+    }
+
+    @Override
+    public boolean isFinished() {
+        return this.duration <= 0;
+    }
+
+    @Override
+    public String getName() {
+        return this.name;
+    }
+
+    @Override
+    public int getDuration() {
+        return this.duration;
     }
     
 }

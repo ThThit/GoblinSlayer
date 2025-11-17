@@ -18,7 +18,7 @@ public class Player extends RPGCharacter {
     @Override
     public void performCharacterTurn(RPGCharacter opponent) {
         System.out.println("Choose Your action: ");
-        System.out.println(" 1. Basic Attack (Deals 10 damage)");
+        System.out.println(" 1. Basic Attack (Deals 5 damage)");
         System.out.println(" 2. Cast 'Posion' (Deals 5 damage for 3 turns)");
         System.out.println(" 3. Cast 'Stun' (75% chance to Stop enemy for 1 turn with Base damage of 5)");
         System.out.println(" 4. Cast 'Bleed' (Deals 2 damage for 5 turns)");
@@ -39,7 +39,7 @@ public class Player extends RPGCharacter {
         switch (choice) {
             case 1 -> { 
                 System.out.println(this.name + " attacks " + opponent.name + "!");
-                opponent.takeDamage(10);
+                opponent.takeDamage(5);
             }
             case 2 -> {
                 System.out.println(this.name + " casts 'Poison' on " + opponent.name + "!");

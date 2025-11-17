@@ -1,43 +1,25 @@
-public abstract class StatusEffect {
-    // abstract class for attack effects 
+public interface StatusEffect {
+    // an interface for attack effects 
     // damage overtime values and others
 
-    protected  String name;
-    protected  int duration;
-    protected RPGCharacter target; // the character who is effected
+    public void decrementDuration();
 
-    public StatusEffect(String name, int duration, RPGCharacter target) {
-        this.name = name;
-        this.duration = duration;
-        this.target = target;
-    }
+    public boolean isFinished();
 
-    public void decrementDuration() {
-        this.duration--;
-    }
+    public String getName();
 
-    public boolean isFinished() {
-        return this.duration <= 0;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    public int getDuration() {
-        return this.duration;
-    }
+    public int getDuration();
 
     // abstract methods
     // what happen when the effect is applied
     // print message and change stat
-    public abstract void onApply();
+    public void onApply();
 
     // what happen at the start of the target turn?
     // has posion and blead deal damage, stun skip turn.
-    public abstract void onTurnStart();
+    public void onTurnStart();
 
     // remove status when the duration is zero
-    public abstract void removeStatus();
+    public void removeStatus();
 
 }

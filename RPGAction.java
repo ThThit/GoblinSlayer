@@ -18,12 +18,13 @@ public class RPGAction {
         Scanner sc = new Scanner(System.in);
 
         System.out.print("Enter your name: ");
-
         String mcName = sc.nextLine();
+        System.out.print("Enter opponent name: ");
+        String opName = sc.nextLine();
         
         // crate characters
         RPGCharacter hero = new Player(mcName, 100, sc);
-        RPGCharacter goblin = new Goblin("Dudu", 50);
+        RPGCharacter goblin = new Goblin(opName, 50);
 
         System.out.println("-----------------------------------------");
         System.out.println("-----------------------------------------");
