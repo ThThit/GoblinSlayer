@@ -8,6 +8,9 @@ public class BleedEffect implements  StatusEffect {
 
     public BleedEffect(String name, int duration, RPGCharacter target, int damagePerTurn) {
         this.damagePerTurn = damagePerTurn;
+        this.name = name;
+        this.duration = duration;
+        this.target = target;
     }
 
     @Override
